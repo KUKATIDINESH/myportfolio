@@ -27,11 +27,11 @@ export function Hero({ onContactClick, onResumeClick }: HeroProps) {
             Full-Stack Developer
           </h2>
           <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-            Junior Full Stack Developer with 7 months of experience developing web applications using Django and MySQL on the backend, 
+            Junior Full Stack Developer with 8 months of experience developing web applications using Django and MySQL on the backend, 
             and HTML, CSS, JavaScript, and basic React.js on the frontend. Strong understanding of REST APIs, database design, and responsive UI development.
           </p>
           
-          {/* CTA Buttons */}
+          {/* CTA Buttons */} 
           <div className="flex flex-wrap gap-4 mb-8">
             <button
               onClick={onContactClick}
