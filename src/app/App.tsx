@@ -24,22 +24,24 @@ export default function App() {
     <div className="min-h-screen">
       <Navigation onContactClick={() => setIsContactOpen(true)} />
       
-      <Hero
-        onContactClick={() => setIsContactOpen(true)}
-        onResumeClick={() => setIsResumeOpen(true)}
-      />
-      
-      <About />
-      
-      <Skills />
-      
-      <Experience />
-      
-      <Projects onProjectClick={setSelectedProject} />
-      
-      <Certificates onCertificateClick={setSelectedCertificate} />
-      
-      <Footer />
+      <div className="pt-30">
+        <Hero
+          onContactClick={() => setIsContactOpen(true)}
+          onResumeClick={() => setIsResumeOpen(true)}
+        />
+        
+        <About />
+        
+        <Skills />
+        
+        <Experience />
+        
+        <Projects onProjectClick={setSelectedProject} />
+        
+        <Certificates onCertificateClick={setSelectedCertificate} />
+        
+        <Footer />
+      </div>
       
       {/* Modals */}
       <ContactModal

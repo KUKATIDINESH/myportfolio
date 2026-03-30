@@ -18,6 +18,17 @@ export function Navigation({ onContactClick }: NavigationProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
@@ -36,7 +47,7 @@ export function Navigation({ onContactClick }: NavigationProps) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? 'bg-white shadow-lg py-4' : 'bg-white/90 backdrop-blur-sm py-6'
         }`}
       >
@@ -87,7 +98,7 @@ export function Navigation({ onContactClick }: NavigationProps) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween' }}
-            className="fixed inset-0 bg-white z-30 pt-24 px-4 md:hidden"
+            className="fixed inset-0 bg-white z-40 pt-24 px-4 md:hidden overflow-y-auto"
           >
             <div className="flex flex-col gap-6">
               {navItems.map((item) => (

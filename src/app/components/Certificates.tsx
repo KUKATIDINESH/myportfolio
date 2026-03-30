@@ -10,6 +10,7 @@ export interface Certificate {
   description: string;
   skills: string[];
   url: string;
+  image?: string;
 }
 
 interface CertificatesProps {
@@ -18,56 +19,57 @@ interface CertificatesProps {
 
 export function Certificates({ onCertificateClick }: CertificatesProps) {
   const certificates: Certificate[] = [
-    {
-      id: 1,
-      title: 'React - The Complete Guide 2024',
-      issuer: 'Udemy',
-      date: 'February 2024',
-      credentialId: 'UC-XXXXXXXXXX',
-      description: 'Comprehensive course covering React fundamentals, hooks, context, Redux, and advanced patterns.',
-      skills: ['React', 'Redux', 'Hooks', 'Context API', 'React Router'],
-      url: 'https://example.com'
-    },
-    {
-      id: 2,
-      title: 'JavaScript Algorithms and Data Structures',
-      issuer: 'freeCodeCamp',
-      date: 'January 2024',
-      credentialId: 'FCC-XXXXXXXXXX',
-      description: 'In-depth certification covering JavaScript ES6+, algorithms, data structures, and problem-solving.',
-      skills: ['JavaScript', 'Algorithms', 'Data Structures', 'ES6+'],
-      url: 'https://example.com'
-    },
+    // {
+    //   id: 1,
+    //   title: 'React - The Complete Guide 2024',
+    //   issuer: 'Udemy',
+    //   date: 'February 2024',
+    //   credentialId: 'UC-XXXXXXXXXX',
+    //   description: 'Comprehensive course covering React fundamentals, hooks, context, Redux, and advanced patterns.',
+    //   skills: ['React', 'Redux', 'Hooks', 'Context API', 'React Router'],
+    //   url: 'https://example.com'
+    // },
+    // {
+    //   id: 2,
+    //   title: 'JavaScript Algorithms and Data Structures',
+    //   issuer: 'freeCodeCamp',
+    //   date: 'January 2024',
+    //   credentialId: 'FCC-XXXXXXXXXX',
+    //   description: 'In-depth certification covering JavaScript ES6+, algorithms, data structures, and problem-solving.',
+    //   skills: ['JavaScript', 'Algorithms', 'Data Structures', 'ES6+'],
+    //   url: 'https://example.com'
+    // },
     {
       id: 3,
-      title: 'Responsive Web Design',
-      issuer: 'freeCodeCamp',
-      date: 'December 2023',
-      credentialId: 'FCC-YYYYYYYYYY',
-      description: 'Certification covering HTML5, CSS3, Flexbox, CSS Grid, and responsive design principles.',
-      skills: ['HTML5', 'CSS3', 'Flexbox', 'CSS Grid', 'Responsive Design'],
-      url: 'https://example.com'
+      title: 'Python Full Stack Development',
+      issuer: 'Pyspiders',
+      date: 'July 2025',
+      credentialId: 'PYS-25206',
+      description: 'Certification covering Python , Django, MYSQl, HTML5, CSS3, JavaScript, CSS Grid, and responsive design principles.',
+      skills: ['Python', 'Django', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'CSS Grid', 'Responsive Design'],
+      url: 'https://www.pyspiders.com',
+      image: 'jspiders_certificate.jpeg'
     },
-    {
-      id: 4,
-      title: 'TypeScript for Professionals',
-      issuer: 'Coursera',
-      date: 'November 2023',
-      credentialId: 'COURSERA-ZZZZZ',
-      description: 'Advanced TypeScript course covering types, interfaces, generics, and real-world applications.',
-      skills: ['TypeScript', 'Type Systems', 'Generics', 'OOP'],
-      url: 'https://example.com'
-    },
-    {
-      id: 5,
-      title: 'Git & GitHub Essential Training',
-      issuer: 'LinkedIn Learning',
-      date: 'October 2023',
-      credentialId: 'LIL-AAAAAAA',
-      description: 'Complete guide to version control, Git workflows, branching strategies, and GitHub collaboration.',
-      skills: ['Git', 'GitHub', 'Version Control', 'Collaboration'],
-      url: 'https://example.com'
-    }
+    // {
+    //   id: 4,
+    //   title: 'TypeScript for Professionals',
+    //   issuer: 'Coursera',
+    //   date: 'November 2023',
+    //   credentialId: 'COURSERA-ZZZZZ',
+    //   description: 'Advanced TypeScript course covering types, interfaces, generics, and real-world applications.',
+    //   skills: ['TypeScript', 'Type Systems', 'Generics', 'OOP'],
+    //   url: 'https://example.com'
+    // },
+    // {
+    //   id: 5,
+    //   title: 'Git & GitHub Essential Training',
+    //   issuer: 'LinkedIn Learning',
+    //   date: 'October 2023',
+    //   credentialId: 'LIL-AAAAAAA',
+    //   description: 'Complete guide to version control, Git workflows, branching strategies, and GitHub collaboration.',
+    //   skills: ['Git', 'GitHub', 'Version Control', 'Collaboration'],
+    //   url: 'https://example.com'
+    // }
   ];
 
   return (
@@ -84,8 +86,9 @@ export function Certificates({ onCertificateClick }: CertificatesProps) {
           <p className="text-gray-600">Click on any certificate to view details</p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certificates.map((cert, index) => (
+        <div className="flex justify-center">
+          <div className="w-full max-w-2xl">
+            {certificates.map((cert, index) => (
             <motion.div
               key={cert.id}
               initial={{ opacity: 0, y: 20 }}
@@ -122,7 +125,8 @@ export function Certificates({ onCertificateClick }: CertificatesProps) {
                 )}
               </div>
             </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -4,8 +4,8 @@ import { Code2, GraduationCap, Award, Target } from 'lucide-react';
 export function About() {
   const stats = [
     { icon: Code2, label: 'Projects Completed', value: '3+' },
-    { icon: Award, label: 'Years Experience', value: '0.6' },
-    { icon: Target, label: 'Technical Skills', value: '15+' },
+    { icon: Award, label: 'Years Experience', value: '1' },
+    { icon: Target, label: 'Technical Skills', value: '6+' },
     { icon: GraduationCap, label: 'Degrees', value: '2' },
   ];
 

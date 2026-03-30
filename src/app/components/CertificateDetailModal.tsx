@@ -1,6 +1,7 @@
 import { Modal } from './Modal';
 import { Certificate } from './Certificates';
 import { Award, Calendar, ExternalLink, Hash } from 'lucide-react';
+import certificateImage from '../../asserts/jspiders_certificate.jpeg';
 
 interface CertificateDetailModalProps {
   certificate: Certificate | null;
@@ -13,12 +14,25 @@ export function CertificateDetailModal({ certificate, onClose }: CertificateDeta
   return (
     <Modal isOpen={!!certificate} onClose={onClose} title={certificate.title}>
       <div className="space-y-6">
-        {/* Certificate Badge */}
-        <div className="flex justify-center">
-          <div className="p-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full">
-            <Award className="w-24 h-24 text-white" />
+        {/* Certificate Image */}
+        {certificate.image && (
+          <div className="flex justify-center">
+            <img 
+              src={certificateImage} 
+              alt={certificate.title}
+              className="max-w-full h-auto rounded-lg shadow-lg max-h-96 object-contain"
+            />
           </div>
-        </div>
+        )}
+        
+        {/* Certificate Badge - Fallback if no image */}
+        {!certificate.image && (
+          <div className="flex justify-center">
+            <div className="p-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full">
+              <Award className="w-24 h-24 text-white" />
+            </div>
+          </div>
+        )}
         
         {/* Issuer */}
         <div className="text-center">
