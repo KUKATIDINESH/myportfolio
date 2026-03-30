@@ -2,6 +2,7 @@ import { Modal } from './Modal';
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import emailjs from '@emailjs/browser';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -16,16 +17,52 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // EmailJS configuration
+  const SERVICE_ID = 'service_06pu3b9';
+  const TEMPLATE_ID = 'template_ft4eq1c';
+  const PUBLIC_KEY = 'o7LNrks-F1hqkKLa5';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      onClose();
-    }, 2000);
+    setLoading(true);
+    setError('');
+
+    try {
+      // Initialize EmailJS with public key
+      emailjs.init(PUBLIC_KEY);
+      
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: 'Kukati Dinesh',
+          to_email: 'kukatidineshyadav69@gmail.com'
+        }
+      );
+
+      if (response.status === 200) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          onClose();
+        }, 3000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setError('Failed to send message. Please try again or contact directly via email.');
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -117,6 +154,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Error Display */}
+            {error && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-600 text-sm">{error}</p>
+              </div>
+            )}
             <div>
               <label htmlFor="name" className="block text-sm mb-2">Name *</label>
               <input
@@ -175,10 +218,20 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              disabled={loading}
+              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Send className="w-5 h-5" />
-              Send Message
+              {loading ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="w-5 h-5" />
+                  Send Message
+                </>
+              )}
             </button>
           </form>
         </div>
