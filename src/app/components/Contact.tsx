@@ -23,6 +23,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   // EmailJS configuration
   const SERVICE_ID = 'service_06pu3b9';
   const TEMPLATE_ID = 'template_ft4eq1c';
+  const AUTO_REPLY_TEMPLATE_ID = 'template_phxk1sx'; // Auto-reply template
   const PUBLIC_KEY = 'o7LNrks-F1hqkKLa5';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,21 +35,49 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       // Initialize EmailJS with public key
       emailjs.init(PUBLIC_KEY);
       
-      // Send email using EmailJS
-      const response = await emailjs.send(
+      // Send email to portfolio owner
+      const ownerEmailResponse = await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
+          from_email: 'kukatidineshyadav69@gmail.com',
+          reply_to: formData.email,
+          subject: `${formData.subject} - from ${formData.email}`,
+          message: `
+🚀 New Message from Portfolio Website
+
+----------------------------------------
+
+👤 Name: ${formData.name}
+📧 Email: ${formData.email}
+📝 Subject: ${formData.subject}
+
+💬 Message:
+${formData.message}
+
+----------------------------------------
+
+This message was sent from your portfolio contact form.
+`,
           to_name: 'Kukati Dinesh',
-          to_email: 'kukatidineshyadav69@gmail.com'
+          to_email: 'kukatidineshyadav69@gmail.com',
+          user_email: formData.email
         }
       );
 
-      if (response.status === 200) {
+      // Send auto-reply email to user
+      const autoReplyResponse = await emailjs.send(
+        SERVICE_ID,
+        AUTO_REPLY_TEMPLATE_ID,
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        }
+      );
+
+      if (ownerEmailResponse.status === 200 && autoReplyResponse.status === 200) {
         setSubmitted(true);
         setTimeout(() => {
           setSubmitted(false);
