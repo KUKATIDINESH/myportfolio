@@ -50,8 +50,8 @@ export function Projects({ onProjectClick }: ProjectsProps) {
       image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb29tJTIwYm9va2luZyUyMHdlYnNpdGV8ZW58MXx8fHwxNzczOTIwMDM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
       technologies: ['Django', 'MySQL', 'Python', 'Django Templates', 'Authentication'],
       category: 'Web Application',
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
+      liveUrl: 'https://pgfinder-w7xu.onrender.com/',
+      githubUrl: 'https://github.com/KUKATIDINESH/pgfinder',
       features: [
         'Secure user registration and login with Django authentication',
         'Dynamic room availability management with real-time updates',

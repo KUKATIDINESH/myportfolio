@@ -73,12 +73,15 @@ This message was sent from your portfolio contact form.
           to_name: formData.name,
           to_email: formData.email,
           subject: formData.subject,
-          message: formData.message
+          message: formData.message,
+          from_email: 'kukatidineshyadav69@gmail.com',
+          verification_message: 'This message was sent from kukatidineshyadav69@gmail.com through the official portfolio contact form. Please confirm this email was sent by Kukati Dinesh and not spam.'
         }
       );
 
       if (ownerEmailResponse.status === 200 && autoReplyResponse.status === 200) {
         setSubmitted(true);
+        setLoading(false);
         setTimeout(() => {
           setSubmitted(false);
           setFormData({ name: '', email: '', subject: '', message: '' });
