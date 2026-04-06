@@ -25,23 +25,23 @@ export function Projects({ onProjectClick }: ProjectsProps) {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'Ad Creatives Automation Platform',
-      description: 'A creative automation platform for dynamically generating static and animated ad banners based on campaign briefs and brand guidelines.',
-      image: 'https://images.unsplash.com/photo-1658297063569-162817482fb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzaG9wcGluZyUyMHdlYnNpdGV8ZW58MXx8fHwxNzczOTIwMDM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-      technologies: ['Django', 'MySQL', 'Python', 'CairoSVG', 'REST APIs', 'React.js'],
-      category: 'Enterprise Platform',
-      liveUrl: 'https://example.com',
+      title: 'Enterprise Animated Digital Ad Campaigns',
+      description: 'High-performance animated ad banners developed for enterprise clients including Adobe, Microsoft, and Audible.',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltYXRlZCUyMGFkJTIwYmFubmVyc3xlbnwxfHx8fDE3NzM5MjAwMzh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'Responsive Design'],
+      category: 'Digital Advertising',
+      liveUrl: 'https://adcampaigns-mu.vercel.app/',
       githubUrl: 'https://github.com',
       features: [
-        'Dynamic banner generation workflows using SVG templates',
-        'Role-based access control (Designer, QC, Project Manager)',
-        'Real-time preview functionality with canvas-based UI',
-        'Automated creative creation, validation, and approval processes',
-        'Backend optimization for performance and scalability'
+        'Animated ad banners for enterprise clients',
+        'Brand compliance and engaging user interactions',
+        'Cross-browser compatibility and responsive design',
+        'Performance optimization for fast loading',
+        'Interactive UI components with smooth animations'
       ],
-      challenges: 'Processing SVG templates and generating static creatives programmatically while maintaining performance.',
-      learnings: 'Mastered CairoSVG library, implemented complex workflow management, and gained experience in enterprise automation.',
-      duration: '3 months'
+      challenges: 'Ensuring brand compliance while creating engaging animations across different platforms.',
+      learnings: 'Mastered GSAP for animations, learned enterprise client requirements, and improved performance optimization skills.',
+      duration: '1 month'
     },
     {
       id: 2,
@@ -65,24 +65,26 @@ export function Projects({ onProjectClick }: ProjectsProps) {
     },
     {
       id: 3,
-      title: 'Enterprise Animated Digital Ad Campaigns',
-      description: 'High-performance animated ad banners developed for enterprise clients including Adobe, Microsoft, and Audible.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmltYXRlZCUyMGFkJTIwYmFubmVyc3xlbnwxfHx8fDE3NzM5MjAwMzh8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'Responsive Design'],
-      category: 'Digital Advertising',
+      title: 'Ad Creatives Automation Platform',
+      description: 'A creative automation platform for dynamically generating static and animated ad banners based on campaign briefs and brand guidelines.',
+      image: 'https://images.unsplash.com/photo-1658297063569-162817482fb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzaG9wcGluZyUyMHdlYnNpdGV8ZW58MXx8fHwxNzczOTIwMDM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      technologies: ['Django', 'MySQL', 'Python', 'CairoSVG', 'REST APIs', 'React.js'],
+      category: 'Enterprise Platform',
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
       features: [
-        'Animated ad banners for enterprise clients',
-        'Brand compliance and engaging user interactions',
-        'Cross-browser compatibility and responsive design',
-        'Performance optimization for fast loading',
-        'Interactive UI components with smooth animations'
+        'Dynamic banner generation workflows using SVG templates',
+        'Role-based access control (Designer, QC, Project Manager)',
+        'Real-time preview functionality with canvas-based UI',
+        'Automated creative creation, validation, and approval processes',
+        'Backend optimization for performance and scalability'
       ],
-      challenges: 'Ensuring brand compliance while creating engaging animations across different platforms.',
-      learnings: 'Mastered GSAP for animations, learned enterprise client requirements, and improved performance optimization skills.',
-      duration: '1 month'
-    }
+      challenges: 'Processing SVG templates and generating static creatives programmatically while maintaining performance.',
+      learnings: 'Mastered CairoSVG library, implemented complex workflow management, and gained experience in enterprise automation.',
+      duration: '3 months'
+    },
+    
+    
   ];
 
   const [filter, setFilter] = useState('All');
